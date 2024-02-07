@@ -23,8 +23,9 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer">
-            Eugenio <span className="sm:block hidden">| Condori</span>
+          <p className="text-white text-[18px] font-bold cursor-pointer flex">
+            Eugenio &nbsp;
+            <span className="sm:block hidden">| Condori</span>
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
@@ -45,7 +46,7 @@ const Navbar = () => {
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
-            src={toggle ? close : menu}
+            src={toggle ? menu : close}
             alt="menu"
             className="w-[28px] h-[28px] object-contain cursor-pointer"
             onClick={() => {
@@ -63,8 +64,9 @@ const Navbar = () => {
                   key={link.id}
                   className={`${
                     active === link.title ? "text-white" : "text-secondary"
-                  } hover:text-white text-[18px] font-medium cursor-pointer`}
+                  } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
+                    setToggle(!toggle);
                     setActive(link.title);
                   }}
                 >
