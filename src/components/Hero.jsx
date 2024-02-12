@@ -1,11 +1,24 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
+  const [isSunTurnedOn, setIsSunTurnedOn] = useState(true);
+
+  const switchSun = () => {
+    setIsSunTurnedOn(!isSunTurnedOn);
+    // document.querySelector("#retrobg").classList.toggle("retrobg-shutdown");
+  };
+
   return (
     <section className="relative w-full h-screen mx-auto hero-background-animation">
-      <div id="retrobg" className="absolute brightness-50">
+      <div
+        id="retrobg"
+        className={`absolute  ${
+          isSunTurnedOn ? "brightness-50" : "retrobg-shutdown"
+        }`}
+      >
         <div id="retrobg-sky">
           <div id="retrobg-stars">
             <div
@@ -94,7 +107,7 @@ const Hero = () => {
             ></div>
           </div>
           <div id="retrobg-sunWrap">
-            <div id="retrobg-sun"></div>
+            <div id="retrobg-sun" onClick={() => switchSun()}></div>
           </div>
           <div id="retrobg-mountains">
             <div id="retrobg-mountains-left" className="retrobg-mountain"></div>
