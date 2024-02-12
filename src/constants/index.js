@@ -116,23 +116,22 @@ const experiences = [
   },
 ];
 
-
 const projects = [
   {
     name: "Educolab",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "Hackathon web project that allows users search, upload and watch courses online. Web app created for helping students with career decisions.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "next-js",
         color: "green-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "css",
         color: "pink-text-gradient",
       },
     ],
@@ -142,18 +141,18 @@ const projects = [
   {
     name: "Rastreo Satelital",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Web application that enables users watch the platzi satellite (platzi-sat-1) and check the coordinates and data that it provides.",
     tags: [
       {
-        name: "react",
+        name: "html",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "css",
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "javascript",
         color: "pink-text-gradient",
       },
     ],
@@ -163,14 +162,14 @@ const projects = [
   {
     name: "Rick And Morty App",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "A website that allows users check Rick and Morty's Characters.",
     tags: [
       {
-        name: "nextjs",
+        name: "reactjs",
         color: "blue-text-gradient",
       },
       {
-        name: "supabase",
+        name: "javascript",
         color: "green-text-gradient",
       },
       {
@@ -184,7 +183,7 @@ const projects = [
   {
     name: "Tic Tac Toe",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "Tic Tac Toe is a game where a player needs to draw a line of 3 figures in order to win the game.",
     tags: [
       {
         name: "nextjs",
