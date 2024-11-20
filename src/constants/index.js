@@ -59,7 +59,7 @@ const services = [
   {
     title: "Self Taught Dev",
     icon: mobile,
-  }
+  },
 ];
 
 const technologies = [
@@ -101,11 +101,11 @@ const technologies = [
     icon: nodejs,
   },
   {
-    name: "git",
+    name: "Git",
     icon: git,
   },
   {
-    name: "figma",
+    name: "Figma",
     icon: figma,
   },
 ];
@@ -156,7 +156,8 @@ const experiences = [
       "Collaborating with a frontend team.",
       "Implementing responsive design.",
     ],
-  },{
+  },
+  {
     title: "Platzi Challenge",
     company_name: "Platzi",
     icon: platzi_logo,
@@ -191,6 +192,7 @@ const projects = [
     ],
     image: educolab,
     source_code_link: "https://github.com/",
+    demo_link: "",
   },
   {
     name: "Rastreo Satelital",
@@ -212,11 +214,12 @@ const projects = [
     ],
     image: rastreo_satelital,
     source_code_link: "https://github.com/",
+    demo_link: "https://platzi.com/",
   },
   {
     name: "Rick And Morty App",
     description:
-      "A website that allows users check Rick and Morty's Characters.",
+      "A website that allows users check Rick and Morty's Characters with a search bar.",
     tags: [
       {
         name: "reactjs",
@@ -233,6 +236,7 @@ const projects = [
     ],
     image: rick_and_morty,
     source_code_link: "https://github.com/",
+    demo_link: "https://platzi.com/",
   },
   {
     name: "Tic Tac Toe",
@@ -254,6 +258,7 @@ const projects = [
     ],
     image: tic_tac_toe,
     source_code_link: "https://github.com/",
+    demo_link: "https://platzi.com/",
   },
   {
     name: "Clock Time",
@@ -275,6 +280,7 @@ const projects = [
     ],
     image: clock_time,
     source_code_link: "https://github.com/",
+    demo_link: "https://platzi.com/",
   },
   {
     name: "Calculator",
@@ -296,6 +302,7 @@ const projects = [
     ],
     image: calculator,
     source_code_link: "https://github.com/",
+    demo_link: "https://platzi.com/",
   },
 ];
 
