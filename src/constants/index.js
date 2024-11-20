@@ -191,7 +191,7 @@ const projects = [
       },
     ],
     image: educolab,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/EduColab/frontend",
     demo_link: "",
   },
   {
@@ -213,8 +213,8 @@ const projects = [
       },
     ],
     image: rastreo_satelital,
-    source_code_link: "https://github.com/",
-    demo_link: "https://platzi.com/",
+    source_code_link: "https://github.com/Eufanzky/rastreo-satelital",
+    demo_link: "https://madays.github.io/rastreo-satelital/",
   },
   {
     name: "Rick And Morty App",
@@ -235,8 +235,8 @@ const projects = [
       },
     ],
     image: rick_and_morty,
-    source_code_link: "https://github.com/",
-    demo_link: "https://platzi.com/",
+    source_code_link: "https://github.com/Eufanzky/Rick-and-Morty-App",
+    demo_link: "",
   },
   {
     name: "Tic Tac Toe",
@@ -257,8 +257,8 @@ const projects = [
       },
     ],
     image: tic_tac_toe,
-    source_code_link: "https://github.com/",
-    demo_link: "https://platzi.com/",
+    source_code_link: "https://github.com/Eufanzky/tic-Tac-Toe",
+    demo_link: "https://eufanzky.github.io/tic-Tac-Toe/",
   },
   {
     name: "Clock Time",
@@ -279,8 +279,8 @@ const projects = [
       },
     ],
     image: clock_time,
-    source_code_link: "https://github.com/",
-    demo_link: "https://platzi.com/",
+    source_code_link: "https://github.com/Eufanzky/Clock-Time",
+    demo_link: "https://eufanzky.github.io/Clock-Time/",
   },
   {
     name: "Calculator",
@@ -301,8 +301,8 @@ const projects = [
       },
     ],
     image: calculator,
-    source_code_link: "https://github.com/",
-    demo_link: "https://platzi.com/",
+    source_code_link: "https://github.com/Eufanzky/calculator-app",
+    demo_link: "https://eufanzky.github.io/calculator-app/",
   },
 ];
 
