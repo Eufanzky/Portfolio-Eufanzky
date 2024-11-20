@@ -3,6 +3,8 @@ import {
   backend,
   creator,
   web,
+
+  //technologies
   javascript,
   typescript,
   html,
@@ -12,9 +14,15 @@ import {
   nodejs,
   git,
   figma,
+  nextjs,
+  python,
+
   //companies
   new_relic_logo,
   platzi_logo,
+  nasa_space_apps_challenge_logo,
+  delve_logo,
+
   //projects
   educolab,
   rastreo_satelital,
@@ -48,6 +56,10 @@ const services = [
     title: "Frontend Developer",
     icon: creator,
   },
+  {
+    title: "Self Taught Dev",
+    icon: mobile,
+  }
 ];
 
 const technologies = [
@@ -71,6 +83,14 @@ const technologies = [
     name: "React JS",
     icon: reactjs,
   },
+  {
+    name: "NextJS",
+    icon: nextjs,
+  },
+  {
+    name: "Python",
+    icon: python,
+  },
 
   {
     name: "Tailwind CSS",
@@ -92,6 +112,29 @@ const technologies = [
 
 const experiences = [
   {
+    title: "Course Project",
+    company_name: "Delve Education",
+    icon: delve_logo,
+    iconBg: "#383E56",
+    date: "Nov 2024",
+    points: [
+      "Developing a web and android application using React Native",
+      "Using computer vision with python to detect recharge cards and convert them to text",
+      "Collaborating with a backend developer",
+    ],
+  },
+  {
+    title: "Hackathon",
+    company_name: "Nasa Spaces Apss Challenge",
+    icon: nasa_space_apps_challenge_logo,
+    iconBg: "#383E56",
+    date: "Oct 2024",
+    points: [
+      "Developing a web applications using React.js to help SDG in education area.",
+      "Collaborating with a team of UX designers and frontend developers",
+    ],
+  },
+  {
     title: "Hackathon",
     company_name: "Platzi and New Relic",
     icon: new_relic_logo,
@@ -111,6 +154,17 @@ const experiences = [
     points: [
       "Developing a web application using HTML, CSS, JavaScript and other related technologies.",
       "Collaborating with a frontend team.",
+      "Implementing responsive design.",
+    ],
+  },{
+    title: "Platzi Challenge",
+    company_name: "Platzi",
+    icon: platzi_logo,
+    iconBg: "#E6DEDD",
+    date: "September 2021",
+    points: [
+      "Developing a web applications using HTML, CSS, JavaScript and other related technologies.",
+      "Building challenge apps to learn more about web development.",
       "Implementing responsive design.",
     ],
   },
