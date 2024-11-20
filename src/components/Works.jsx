@@ -66,7 +66,7 @@ const ProjectCard = ({
           {source_code_link !== "" && (
             <div
               href=""
-              className="w-1/2 bg-[#3a90e0] text-black flex items-center justify-evenly mr-4 py-3 px-5 rounded-lg hover:bg-[#ec008c] hover:text-black hover:cursor-pointer hover:shadow-[0_0_15px_#ec008c] transition-shadow duration-300"
+              className="w-1/2 bg-[#3a90e0] text-black items-center justify-evenly mr-4 py-3 px-5 rounded-lg hover:bg-[#ec008c] hover:text-black hover:cursor-pointer hover:shadow-[0_0_15px_#ec008c] transition-shadow duration-300 hidden sm:flex"
               onClick={() => window.open(source_code_link, "_blank")}
             >
               <span>
@@ -82,7 +82,7 @@ const ProjectCard = ({
           {demo_link !== "" && (
             <div
               href=""
-              className="w-1/2 bg-[#11998e] text-black flex items-center justify-evenly mr-4 py-3 px-5 rounded-lg hover:bg-[#ec008c] hover:text-black hover:cursor-pointer hover:shadow-[0_0_15px_#ec008c] transition-shadow duration-300"
+              className="w-1/2 bg-[#11998e] text-black items-center justify-evenly mr-4 py-3 px-5 rounded-lg hover:bg-[#ec008c] hover:text-black hover:cursor-pointer hover:shadow-[0_0_15px_#ec008c] transition-shadow duration-300 hidden sm:flex"
               onClick={() => window.open(demo_link, "_blank")}
             >
               <span>
