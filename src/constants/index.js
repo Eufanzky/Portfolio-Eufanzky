@@ -1,265 +1,309 @@
 import {
-    mobile,
-    backend,
-    creator,
-    web,
-    javascript,
-    typescript,
-    html,
-    css,
-    reactjs,
-    redux,
-    tailwind,
-    nodejs,
-    mongodb,
-    git,
-    figma,
-    docker,
-    meta,
-    starbucks,
-    tesla,
-    shopify,
-    carrent,
-    jobit,
-    tripguide,
-    threejs,
-  } from "../assets";
-  
-  export const navLinks = [
-    {
-      id: "about",
-      title: "About",
-    },
-    {
-      id: "work",
-      title: "Work",
-    },
-    {
-      id: "contact",
-      title: "Contact",
-    },
-  ];
-  
-  const services = [
-    {
-      title: "Web Developer",
-      icon: web,
-    },
-    {
-      title: "React Native Developer",
-      icon: mobile,
-    },
-    {
-      title: "Backend Developer",
-      icon: backend,
-    },
-    {
-      title: "Content Creator",
-      icon: creator,
-    },
-  ];
-  
-  const technologies = [
-    {
-      name: "HTML 5",
-      icon: html,
-    },
-    {
-      name: "CSS 3",
-      icon: css,
-    },
-    {
-      name: "JavaScript",
-      icon: javascript,
-    },
-    {
-      name: "TypeScript",
-      icon: typescript,
-    },
-    {
-      name: "React JS",
-      icon: reactjs,
-    },
-    {
-      name: "Redux Toolkit",
-      icon: redux,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: tailwind,
-    },
-    {
-      name: "Node JS",
-      icon: nodejs,
-    },
-    {
-      name: "MongoDB",
-      icon: mongodb,
-    },
-    {
-      name: "Three JS",
-      icon: threejs,
-    },
-    {
-      name: "git",
-      icon: git,
-    },
-    {
-      name: "figma",
-      icon: figma,
-    },
-    {
-      name: "docker",
-      icon: docker,
-    },
-  ];
-  
-  const experiences = [
-    {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
-      iconBg: "#383E56",
-      date: "March 2020 - April 2021",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
-      iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
-      iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-  ];
-  
-  const testimonials = [
-    {
-      testimonial:
-        "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-      name: "Sara Lee",
-      designation: "CFO",
-      company: "Acme Co",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
-    },
-    {
-      testimonial:
-        "I've never met a web developer who truly cares about their clients' success like Rick does.",
-      name: "Chris Brown",
-      designation: "COO",
-      company: "DEF Corp",
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    {
-      testimonial:
-        "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-      name: "Lisa Wang",
-      designation: "CTO",
-      company: "456 Enterprises",
-      image: "https://randomuser.me/api/portraits/women/6.jpg",
-    },
-  ];
-  
-  const projects = [
-    {
-      name: "Car Rent",
-      description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
-      tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "mongodb",
-          color: "green-text-gradient",
-        },
-        {
-          name: "tailwind",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: carrent,
-      source_code_link: "https://github.com/",
-    },
-    {
-      name: "Job IT",
-      description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-      tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "restapi",
-          color: "green-text-gradient",
-        },
-        {
-          name: "scss",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: jobit,
-      source_code_link: "https://github.com/",
-    },
-    {
-      name: "Trip Guide",
-      description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-      tags: [
-        {
-          name: "nextjs",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "supabase",
-          color: "green-text-gradient",
-        },
-        {
-          name: "css",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
-    },
-  ];
-  
-  export { services, technologies, experiences, testimonials, projects };
+  mobile,
+  backend,
+  creator,
+  web,
+
+  //technologies
+  javascript,
+  typescript,
+  html,
+  css,
+  reactjs,
+  tailwind,
+  nodejs,
+  git,
+  figma,
+  nextjs,
+  python,
+
+  //companies
+  new_relic_logo,
+  platzi_logo,
+  nasa_space_apps_challenge_logo,
+  delve_logo,
+
+  //projects
+  educolab,
+  rastreo_satelital,
+  rick_and_morty,
+  tic_tac_toe,
+  clock_time,
+  calculator,
+} from "../assets";
+
+export const navLinks = [
+  {
+    id: "about",
+    title: "About",
+  },
+  {
+    id: "work",
+    title: "Work",
+  },
+  {
+    id: "contact",
+    title: "Contact",
+  },
+];
+
+const services = [
+  {
+    title: "Web Developer",
+    icon: web,
+  },
+  {
+    title: "Frontend Developer",
+    icon: creator,
+  },
+  {
+    title: "Self Taught Dev",
+    icon: mobile,
+  },
+];
+
+const technologies = [
+  {
+    name: "HTML 5",
+    icon: html,
+  },
+  {
+    name: "CSS 3",
+    icon: css,
+  },
+  {
+    name: "JavaScript",
+    icon: javascript,
+  },
+  {
+    name: "TypeScript",
+    icon: typescript,
+  },
+  {
+    name: "React JS",
+    icon: reactjs,
+  },
+  {
+    name: "NextJS",
+    icon: nextjs,
+  },
+  {
+    name: "Python",
+    icon: python,
+  },
+
+  {
+    name: "Tailwind CSS",
+    icon: tailwind,
+  },
+  {
+    name: "Node JS",
+    icon: nodejs,
+  },
+  {
+    name: "Git",
+    icon: git,
+  },
+  {
+    name: "Figma",
+    icon: figma,
+  },
+];
+
+const experiences = [
+  {
+    title: "Course Project",
+    company_name: "Delve Education",
+    icon: delve_logo,
+    iconBg: "#383E56",
+    date: "Nov 2024",
+    points: [
+      "Developing a web and android application using React Native",
+      "Using computer vision with python to detect recharge cards and convert them to text",
+      "Collaborating with a backend developer",
+    ],
+  },
+  {
+    title: "Hackathon",
+    company_name: "Nasa Spaces Apss Challenge",
+    icon: nasa_space_apps_challenge_logo,
+    iconBg: "#383E56",
+    date: "Oct 2024",
+    points: [
+      "Developing a web applications using React.js to help SDG in education area.",
+      "Collaborating with a team of UX designers and frontend developers",
+    ],
+  },
+  {
+    title: "Hackathon",
+    company_name: "Platzi and New Relic",
+    icon: new_relic_logo,
+    iconBg: "#383E56",
+    date: "May 2023",
+    points: [
+      "Developing a web applications using Next.js and other related technologies.",
+      "Collaborating with a team including frontend developers and backend developers",
+    ],
+  },
+  {
+    title: "Platzi Challenge (Satellite)",
+    company_name: "Platzi",
+    icon: platzi_logo,
+    iconBg: "#E6DEDD",
+    date: "August 2023",
+    points: [
+      "Developing a web application using HTML, CSS, JavaScript and other related technologies.",
+      "Collaborating with a frontend team.",
+      "Implementing responsive design.",
+    ],
+  },
+  {
+    title: "Platzi Challenge",
+    company_name: "Platzi",
+    icon: platzi_logo,
+    iconBg: "#E6DEDD",
+    date: "September 2021",
+    points: [
+      "Developing a web applications using HTML, CSS, JavaScript and other related technologies.",
+      "Building challenge apps to learn more about web development.",
+      "Implementing responsive design.",
+    ],
+  },
+];
+
+const projects = [
+  {
+    name: "Educolab",
+    description:
+      "Hackathon web project that allows users search, upload and watch courses online. Web app created for helping students with career decisions.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "next-js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: educolab,
+    source_code_link: "https://github.com/EduColab/frontend",
+    demo_link: "",
+  },
+  {
+    name: "Rastreo Satelital",
+    description:
+      "Web application that enables users watch the platzi satellite (platzi-sat-1) and check the coordinates and data that it provides.",
+    tags: [
+      {
+        name: "html",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css",
+        color: "green-text-gradient",
+      },
+      {
+        name: "javascript",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: rastreo_satelital,
+    source_code_link: "https://github.com/Eufanzky/rastreo-satelital",
+    demo_link: "https://madays.github.io/rastreo-satelital/",
+  },
+  {
+    name: "Rick And Morty App",
+    description:
+      "A website that allows users check Rick and Morty's Characters with a search bar.",
+    tags: [
+      {
+        name: "reactjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "javascript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: rick_and_morty,
+    source_code_link: "https://github.com/Eufanzky/Rick-and-Morty-App",
+    demo_link: "",
+  },
+  {
+    name: "Tic Tac Toe",
+    description:
+      "Tic Tac Toe is a game where a player needs to draw a line of 3 figures in order to win the game.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "supabase",
+        color: "green-text-gradient",
+      },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: tic_tac_toe,
+    source_code_link: "https://github.com/Eufanzky/tic-Tac-Toe",
+    demo_link: "https://eufanzky.github.io/tic-Tac-Toe/",
+  },
+  {
+    name: "Clock Time",
+    description:
+      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "supabase",
+        color: "green-text-gradient",
+      },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: clock_time,
+    source_code_link: "https://github.com/Eufanzky/Clock-Time",
+    demo_link: "https://eufanzky.github.io/Clock-Time/",
+  },
+  {
+    name: "Calculator",
+    description:
+      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "supabase",
+        color: "green-text-gradient",
+      },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: calculator,
+    source_code_link: "https://github.com/Eufanzky/calculator-app",
+    demo_link: "https://eufanzky.github.io/calculator-app/",
+  },
+];
+
+export { services, technologies, experiences, projects };

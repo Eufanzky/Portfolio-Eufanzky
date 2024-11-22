@@ -7,6 +7,7 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
+//technologies
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
@@ -20,15 +21,22 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import nextjs from "./tech/nextjs.png";
+import python from "./tech/python.png";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
+//logos
+import new_relic_logo from "./company/new_relic_logo.png";
+import platzi_logo from "./company/platzi_logo.png";
+import nasa_space_apps_challenge_logo from "./company/nasa_space_apps_challenge_logo.png";
+import delve_logo from "./company/delve_logo.png";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+//project images
+import educolab from "./educolab.png";
+import rastreo_satelital from "./rastreo-satelital.png";
+import rick_and_morty from "./rick-and-morty.png";
+import tic_tac_toe from "./tic-tac-toe.png";
+import clock_time from "./clockTime.png";
+import calculator from "./calculator.png";
 
 export {
   logo,
@@ -39,6 +47,8 @@ export {
   github,
   menu,
   close,
+
+  //technologies
   css,
   docker,
   figma,
@@ -52,11 +62,20 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
+  nextjs,
+  python,
+
+  //companies
+  new_relic_logo,
+  platzi_logo,
+  nasa_space_apps_challenge_logo,
+  delve_logo,
+
+  //projects
+  educolab,
+  rastreo_satelital,
+  rick_and_morty,
+  tic_tac_toe,
+  clock_time,
+  calculator,
 };
