@@ -7,6 +7,8 @@ import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
+import { FaGithub, FaLinkedin  } from "react-icons/fa";
+
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
@@ -16,9 +18,43 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs.send(
+      "service_guyq4r4",
+      "template_b396zvf",
+      {
+        from_name: form.name,
+        to_name: "Eugenio",
+        from_email: form.email,
+        to_email: "eufanzky@gmail.com",
+        message: form.message,
+      },
+      "8oDs25HmpeGHnWdPp"
+    )
+    .then(() => {
+      setLoading(false);
+      alert("Message sent successfully!");
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    }, (error) => {
+      setLoading(false);
+      console.error(error);
+      alert("Failed to send message. Please try again later.");
+    });
+
+    
+  };
 
   return (
     <div
@@ -30,7 +66,10 @@ const Contact = () => {
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
-
+        <div className="flex justify-start">
+          <a href="https://github.com/Eufanzky" className="w-1/5 flex items-center justify-evenly text-[#4CC9F0] hover:text-[#F72585]"><FaGithub className="text-xl hidden sm:block"/> Github</a>
+          <a href="https://linkedin.com/in/eugenio-condori" className="w-1/5 ml-5 flex items-center justify-evenly text-[#4CC9F0] hover:text-[#F72585]"><FaLinkedin className="text-xl hidden sm:block"/> LinkedIn</a>
+        </div>
         <form
           ref={formRef}
           onSubmit={handleSubmit}
@@ -59,7 +98,9 @@ const Contact = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-[#4361EE] font-medium mb-4">Your Message</span>
+            <span className="text-[#4361EE] font-medium mb-4">
+              Your Message
+            </span>
             <textarea
               rows={7}
               name="message"
