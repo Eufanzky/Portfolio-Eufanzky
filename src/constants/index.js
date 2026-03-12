@@ -263,7 +263,7 @@ const projects = [
   {
     name: "Clock Time",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "A clock application that displays the current time with a clean and interactive interface.",
     tags: [
       {
         name: "nextjs",
@@ -285,7 +285,7 @@ const projects = [
   {
     name: "Calculator",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "A calculator application that performs basic arithmetic operations with a user-friendly interface.",
     tags: [
       {
         name: "nextjs",
