@@ -64,10 +64,11 @@ const ProjectCard = ({
 
         <div className="mt-4 flex flex-row">
           {source_code_link !== "" && (
-            <div
-              href=""
-              className="w-1/2 bg-[#3a90e0] text-black items-center justify-evenly mr-4 py-3 px-5 rounded-lg hover:bg-[#ec008c] hover:text-black hover:cursor-pointer hover:shadow-[0_0_15px_#ec008c] transition-shadow duration-300 hidden sm:flex"
-              onClick={() => window.open(source_code_link, "_blank")}
+            <a
+              href={source_code_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-1/2 bg-[#3a90e0] text-black items-center justify-evenly mr-4 py-3 px-5 rounded-lg hover:bg-[#ec008c] hover:text-black hover:shadow-[0_0_15px_#ec008c] transition-shadow duration-300 hidden sm:flex"
             >
               <span>
                 <FaGithub />
@@ -76,14 +77,15 @@ const ProjectCard = ({
               <span>
                 <GoLinkExternal />
               </span>
-            </div>
+            </a>
           )}
 
           {demo_link !== "" && (
-            <div
-              href=""
-              className="w-1/2 bg-[#11998e] text-black items-center justify-evenly mr-4 py-3 px-5 rounded-lg hover:bg-[#ec008c] hover:text-black hover:cursor-pointer hover:shadow-[0_0_15px_#ec008c] transition-shadow duration-300 hidden sm:flex"
-              onClick={() => window.open(demo_link, "_blank")}
+            <a
+              href={demo_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-1/2 bg-[#11998e] text-black items-center justify-evenly mr-4 py-3 px-5 rounded-lg hover:bg-[#ec008c] hover:text-black hover:shadow-[0_0_15px_#ec008c] transition-shadow duration-300 hidden sm:flex"
             >
               <span>
                 <FaPlay />
@@ -92,7 +94,7 @@ const ProjectCard = ({
               <span>
                 <GoLinkExternal />
               </span>
-            </div>
+            </a>
           )}
         </div>
       </Tilt>
