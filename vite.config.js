@@ -6,11 +6,13 @@ import { compression } from 'vite-plugin-compression2'
 export default defineConfig({
   plugins: [
     react(),
-    compression({ algorithm: 'gzip' }),
-    compression({ algorithm: 'brotliCompress' }),
+    compression({ algorithm: 'gzip', threshold: 1024 }),
+    compression({ algorithm: 'brotliCompress', threshold: 1024 }),
   ],
   build: {
     target: 'es2020',
+    cssTarget: 'es2020',
+    modulePreload: { polyfill: false },
     rollupOptions: {
       output: {
         manualChunks: {
