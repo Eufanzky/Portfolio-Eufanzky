@@ -29,3 +29,6 @@ Personal portfolio website for Eugenio Condori, built with React, Three.js, and 
 **Tailwind custom theme** (in `tailwind.config.js`): custom colors (`primary` = dark bg `#050816`, `secondary`, `tertiary` = card bg), custom `xs: 450px` breakpoint, hero background image pattern.
 
 **Color accent scheme:** Pink `#F72585` for primary accent, cyan `#4CC9F0` for sub-text, blue `#4361EE` for form labels, blue `#4895ef` for secondary.
+
+## GIT AND GITHUB
+Never push directly to the main branch in git, use another branches for the changes.
