@@ -30,13 +30,6 @@ import platzi_logo from "./company/platzi_logo.png";
 import nasa_space_apps_challenge_logo from "./company/nasa_space_apps_challenge_logo.png";
 import delve_logo from "./company/delve_logo.png";
 
-//project images
-import educolab from "./educolab.png";
-import rastreo_satelital from "./rastreo-satelital.png";
-import rick_and_morty from "./rick-and-morty.png";
-import tic_tac_toe from "./tic-tac-toe.png";
-import clock_time from "./clockTime.png";
-import calculator from "./calculator.png";
 
 export {
   logo,
@@ -71,11 +64,4 @@ export {
   nasa_space_apps_challenge_logo,
   delve_logo,
 
-  //projects
-  educolab,
-  rastreo_satelital,
-  rick_and_morty,
-  tic_tac_toe,
-  clock_time,
-  calculator,
 };

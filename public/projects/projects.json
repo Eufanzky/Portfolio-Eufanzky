@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Educolab",
+    "description": "Hackathon web project that allows users search, upload and watch courses online. Web app created for helping students with career decisions.",
+    "tags": [
+      { "name": "react", "color": "blue-text-gradient" },
+      { "name": "next-js", "color": "green-text-gradient" },
+      { "name": "css", "color": "pink-text-gradient" }
+    ],
+    "image": "/projects/educolab.png",
+    "source_code_link": "https://github.com/EduColab/frontend",
+    "demo_link": ""
+  },
+  {
+    "name": "Rastreo Satelital",
+    "description": "Web application that enables users watch the platzi satellite (platzi-sat-1) and check the coordinates and data that it provides.",
+    "tags": [
+      { "name": "html", "color": "blue-text-gradient" },
+      { "name": "css", "color": "green-text-gradient" },
+      { "name": "javascript", "color": "pink-text-gradient" }
+    ],
+    "image": "/projects/rastreo-satelital.png",
+    "source_code_link": "https://github.com/Eufanzky/rastreo-satelital",
+    "demo_link": "https://madays.github.io/rastreo-satelital/"
+  },
+  {
+    "name": "Rick And Morty App",
+    "description": "A website that allows users check Rick and Morty's Characters with a search bar.",
+    "tags": [
+      { "name": "reactjs", "color": "blue-text-gradient" },
+      { "name": "javascript", "color": "green-text-gradient" },
+      { "name": "css", "color": "pink-text-gradient" }
+    ],
+    "image": "/projects/rick-and-morty.png",
+    "source_code_link": "https://github.com/Eufanzky/Rick-and-Morty-App",
+    "demo_link": ""
+  },
+  {
+    "name": "Tic Tac Toe",
+    "description": "Tic Tac Toe is a game where a player needs to draw a line of 3 figures in order to win the game.",
+    "tags": [
+      { "name": "nextjs", "color": "blue-text-gradient" },
+      { "name": "supabase", "color": "green-text-gradient" },
+      { "name": "css", "color": "pink-text-gradient" }
+    ],
+    "image": "/projects/tic-tac-toe.png",
+    "source_code_link": "https://github.com/Eufanzky/tic-Tac-Toe",
+    "demo_link": "https://eufanzky.github.io/tic-Tac-Toe/"
+  },
+  {
+    "name": "Clock Time",
+    "description": "A clock application that displays the current time with a clean and interactive interface.",
+    "tags": [
+      { "name": "nextjs", "color": "blue-text-gradient" },
+      { "name": "supabase", "color": "green-text-gradient" },
+      { "name": "css", "color": "pink-text-gradient" }
+    ],
+    "image": "/projects/clockTime.png",
+    "source_code_link": "https://github.com/Eufanzky/Clock-Time",
+    "demo_link": "https://eufanzky.github.io/Clock-Time/"
+  },
+  {
+    "name": "Calculator",
+    "description": "A calculator application that performs basic arithmetic operations with a user-friendly interface.",
+    "tags": [
+      { "name": "nextjs", "color": "blue-text-gradient" },
+      { "name": "supabase", "color": "green-text-gradient" },
+      { "name": "css", "color": "pink-text-gradient" }
+    ],
+    "image": "/projects/calculator.png",
+    "source_code_link": "https://github.com/Eufanzky/calculator-app",
+    "demo_link": "https://eufanzky.github.io/calculator-app/"
+  }
+]

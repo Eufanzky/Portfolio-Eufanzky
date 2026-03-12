@@ -1,10 +1,10 @@
+import { useState, useEffect } from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { GoLinkExternal } from "react-icons/go";
 import { FaGithub, FaPlay } from "react-icons/fa";
@@ -103,6 +103,15 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch("/projects/projects.json")
+      .then((res) => res.json())
+      .then((data) => setProjects(data))
+      .catch((err) => console.error("Failed to load projects:", err));
+  }, []);
+
   return (
     <>
       <motion.div variants={textVariant()}>
