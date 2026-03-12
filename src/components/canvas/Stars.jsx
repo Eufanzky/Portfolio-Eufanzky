@@ -53,7 +53,7 @@ const StarsCanvas = () => {
     <div ref={containerRef} className="w-full h-auto absolute inset-0 z-[-1]">
       {isVisible && (
         <Canvas
-          frameloop="demand"
+          frameloop="always"
           camera={{ position: [0, 0, 1] }}
           dpr={[1, 1.5]}
         >

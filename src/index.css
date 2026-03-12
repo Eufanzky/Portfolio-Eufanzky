@@ -390,12 +390,6 @@
 
 
 
-/* content-visibility for below-fold sections */
-.section-cv-auto {
-	content-visibility: auto;
-	contain-intrinsic-size: auto 500px;
-}
-
 /*******************************/
 /* Define otros keyframes aquí */
 
