@@ -31,12 +31,12 @@ import nasa_space_apps_challenge_logo from "./company/nasa_space_apps_challenge_
 import delve_logo from "./company/delve_logo.png";
 
 //project images
-import educolab from "./educolab.png";
-import rastreo_satelital from "./rastreo-satelital.png";
-import rick_and_morty from "./rick-and-morty.png";
-import tic_tac_toe from "./tic-tac-toe.png";
-import clock_time from "./clockTime.png";
-import calculator from "./calculator.png";
+import educolab from "./educolab.webp";
+import rastreo_satelital from "./rastreo-satelital.webp";
+import rick_and_morty from "./rick-and-morty.webp";
+import tic_tac_toe from "./tic-tac-toe.webp";
+import clock_time from "./clockTime.webp";
+import calculator from "./calculator.webp";
 
 export {
   logo,
