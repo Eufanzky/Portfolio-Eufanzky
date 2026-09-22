@@ -13,6 +13,10 @@ Personal portfolio website for Eugenio Condori, built with React, Three.js, and 
 - `npm run lint` — ESLint (JS/JSX, zero warnings allowed)
 - `npm run preview` — Preview production build
 
+There is no test suite. Check changes with `npm run lint` and `npm run build`.
+
+**Environment variables** (Vite `VITE_` prefix, read in `Contact.jsx`): `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY`, `VITE_CONTACT_EMAIL`. The contact form needs these to send email.
+
 ## Architecture
 
 **Stack:** React 18 + Vite, Three.js (via @react-three/fiber + @react-three/drei), Framer Motion, Tailwind CSS (JIT mode), EmailJS for contact form.
@@ -24,7 +28,13 @@ Personal portfolio website for Eugenio Condori, built with React, Three.js, and 
 - `src/constants/index.js` — All portfolio content data (nav links, services, technologies, experiences, projects). This is the primary file to edit when updating portfolio content.
 - `src/styles.js` — Shared Tailwind class string constants for typography (hero text, section headers).
 - `src/utils/motion.js` — Framer Motion animation variant factories (`textVariant`, `fadeIn`, `zoomIn`, `slideIn`, `staggerContainer`).
-- `src/assets/index.js` — Central re-export of all image/icon assets.
+- `src/assets/index.js` — Central re-export of all image/icon assets. Project images have `.webp` variants alongside the `.png` originals.
+
+**Performance setup** (recent commits focus on this; keep it intact):
+
+- `App.jsx` loads `Navbar` and `Hero` eagerly. Everything below the fold (About through Contact, plus `StarsCanvas`) uses `React.lazy` inside one `Suspense`.
+- `vite.config.js` splits vendors into manual chunks (`vendor-react`, `vendor-three`, `vendor-motion`) and emits gzip and brotli files through `vite-plugin-compression2`.
+- The 3D models are served from `public/desktop_pc/` and `public/planet/`. `vercel.json` sets the cache headers for those paths and for hashed `/assets/`. The canvases load the Draco-compressed `scene-draco.gltf` files; the plain `scene.gltf` versions are unused originals. If you move the models, update `vercel.json` too.
 
 **Tailwind custom theme** (in `tailwind.config.js`): custom colors (`primary` = dark bg `#050816`, `secondary`, `tertiary` = card bg), custom `xs: 450px` breakpoint, hero background image pattern.
 
