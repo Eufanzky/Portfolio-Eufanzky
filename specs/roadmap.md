@@ -41,7 +41,7 @@ Every step ends with this human-in-the-loop check, in order:
     - at mobile width, no Three.js chunk and no `.gltf` file is downloaded. This fails today (`specs/perf-baseline.md`, finding 1), so mark it as an expected failure (`test.fail`) until step 16 fixes it.
 14. Update `CLAUDE.md` with the test commands and where the tests live.
 
-## Phase 3: Improve performance (steps 15–19 done 2026-09-23, step 20 after deploy)
+## Phase 3: Improve performance (done 2026-09-23, PSI mobile 94)
 
 Pick items by what the baseline shows to be slowest. Re-measure after each one.
 
