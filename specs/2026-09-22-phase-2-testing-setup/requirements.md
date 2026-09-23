@@ -49,9 +49,17 @@ Out of scope:
 | Mobile 3D test | `test.fail` until step 16 | It records the known problem now, and it will start failing loudly once the problem is fixed and the mark is removed. |
 | ESLint for tests | Override for `**/*.test.{js,jsx}`, `e2e/**` and `src/test/**` (Node env) | Test files use Node APIs. No `eslint-disable` comments, as the lint rule in `specs/tech-stack.md` requires. |
 
+## Changes made during the phase
+
+- `jsdom` is pinned to v29, because v30 needs Node 22.22.2 and the machine has 22.22.1. `@testing-library/dom` is installed too, because `@testing-library/react` 16 requires it as a peer dependency.
+- The Works tests find the "Github" and "Demo" buttons by their visible text, not by the link role. Testing Library doesn't treat `<a href="">` as a link, so a role query missed a button with an empty link.
+- The mobile 3D test also forbids `Loader-*.js`: it holds drei code (99 KB) that only the Earth and Computers canvases import. The test showed that on mobile the `Computers`, `Earth` and `Loader` chunks load too, not only `Stars` (probably because `isMobile` starts as `false` until an effect runs). Step 16 has to cover all of them.
+- One site fix, approved by the user: `Stars.jsx` used `new Float32Array(5000)`, which isn't a multiple of 3, so the last star was NaN and Three.js logged a console error on every page load. It is now `4998` (the same 1666 stars that were drawn before), so the site looks the same.
+- Playwright timeouts are raised (60 s per test, 15 s per `expect`), because headless Chromium renders the 3D canvases in software and the desktop page is slow.
+
 ## Open questions
 
-- **Playwright system libraries:** if `npx playwright install chromium` works but the browser won't start, the user runs `sudo npx playwright install-deps chromium` once (Claude can't run `sudo`).
+- **Playwright system libraries:** resolved. Chromium was missing `libnss3`, `libnspr4` and `libasound2`, and the user ran `sudo npx playwright install-deps chromium`.
 
 ## Constraints
 
