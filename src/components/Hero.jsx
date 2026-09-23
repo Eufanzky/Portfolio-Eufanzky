@@ -1,24 +1,13 @@
-import { lazy, Suspense, useState, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { AnimatedBackground } from "./AnimatedBackground";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 const ComputersCanvas = lazy(() => import("./canvas/Computers"));
 
 const Hero = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
+  const isMobile = useIsMobile();
 
   return (
     <section className="relative w-full h-screen mx-auto hero-background-animation">
