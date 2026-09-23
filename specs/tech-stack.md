@@ -9,7 +9,7 @@
 | Animation | Framer Motion (variants in `src/utils/motion.js`, section stagger via the `SectionWrapper` HOC) |
 | 3D | Three.js through `@react-three/fiber` and `@react-three/drei` |
 | Contact form | EmailJS (`@emailjs/browser`), configured with `VITE_EMAILJS_*` and `VITE_CONTACT_EMAIL` |
-| Hosting | Vercel (cache headers in `vercel.json`) |
+| Hosting | Netlify (https://eugenio-condori.netlify.app/). `vercel.json` is kept but has no effect there. Decided in Phase 1 to stay on Netlify and leave the hosting config as it is. |
 | Quality checks | ESLint with zero warnings (`npm run lint`) and a clean `npm run build`. There is no test suite. |
 
 ## Decisions

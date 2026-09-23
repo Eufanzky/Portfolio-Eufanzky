@@ -2,6 +2,8 @@
 
 Performance comes first, then project content. Each step is one small piece of work, and is one commit (or one small PR).
 
+All work happens on a `feature/<feature-name>` branch created from `main`, never on `main` itself. The branch is merged into `main` through a pull request after the user approves.
+
 Every step ends with this human-in-the-loop check, in order:
 
 1. `npm run lint` and `npm run build` pass.
@@ -19,7 +21,7 @@ Every step ends with this human-in-the-loop check, in order:
 6. Delete those branches on GitHub too (they still hold the history with the hardcoded email).
 7. Fix `npm run lint` so it passes with zero warnings (it was already failing before Phase 0).
 
-## Phase 1: Measure performance
+## Phase 1: Measure performance (done 2026-09-22)
 
 8. Run Lighthouse (mobile) on the production site and record the score, LCP and CLS in `specs/perf-baseline.md`.
 9. Run `npm run build` and record the main chunk sizes in the same file.
