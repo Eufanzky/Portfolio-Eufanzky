@@ -1,11 +1,12 @@
-import { useState, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+
+const EarthCanvas = lazy(() => import("./canvas/Earth"));
 
 const ContactGithubIcon = () => (
   <svg viewBox="0 0 496 512" fill="currentColor" width="1em" height="1em" className="text-xl hidden sm:block">
@@ -27,6 +28,16 @@ const Contact = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -130,12 +141,16 @@ const Contact = () => {
         </form>
       </motion.div>
 
-      <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-      >
-        <EarthCanvas />
-      </motion.div>
+      {!isMobile && (
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 1)}
+          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+        >
+          <Suspense fallback={null}>
+            <EarthCanvas />
+          </Suspense>
+        </motion.div>
+      )}
     </div>
   );
 };
