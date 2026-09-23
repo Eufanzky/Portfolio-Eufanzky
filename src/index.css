@@ -305,6 +305,9 @@
 	width: 100%;
 	height: 100%;
 	transform-origin: top center;
+	/* Same tilt as the keyframes, so the floor stays in perspective when
+	   reduced motion stops the animation. */
+	transform: rotateX( 84deg );
 	animation: .35s linear infinite retrobg-lines-anim;
 	will-change: transform;
 }
@@ -469,5 +472,32 @@
       0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
       -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+  }
+}
+
+/* Hero "scroll down" dot. Plain CSS so the first load needs no Framer Motion. */
+.hero-scroll-dot {
+  animation: hero-scroll-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-dot {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(24px);
+  }
+}
+
+/* Visitors who ask for less motion get a still page. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

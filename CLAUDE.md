@@ -44,6 +44,7 @@ Check changes with `npm run lint`, `npm test`, `npm run test:e2e` and `npm run b
 **Performance setup** (recent commits focus on this; keep it intact):
 
 - `App.jsx` loads `Navbar` and `Hero` eagerly. Everything below the fold (About through Contact, plus `StarsCanvas`) uses `React.lazy` inside one `Suspense`.
+- `Navbar` and `Hero` don't import Framer Motion (the hero's bouncing dot is the CSS `.hero-scroll-dot`), so `vendor-motion` isn't in the first-load `modulepreload` list. Only the lazy sections load it. `e2e/critical-path.spec.js` checks this. `SectionWrapper` wraps each section in `MotionConfig reducedMotion="user"`, and `index.css` stops CSS animations under `prefers-reduced-motion: reduce`.
 - `vite.config.js` splits vendors into manual chunks (`vendor-react`, `vendor-motion`) and emits gzip and brotli files through `vite-plugin-compression2`. Three.js has no manual chunk on purpose. It ends up in an async chunk that only the lazy-loaded canvases request.
 - The 3D models are served from `public/desktop_pc/` and `public/planet/`. `vercel.json` sets the cache headers for those paths and for hashed `/assets/`. The canvases load the Draco-compressed `scene-draco.gltf` files; the plain `scene.gltf` versions are unused originals. If you move the models, update `vercel.json` too. Note: production (https://eugenio-condori.netlify.app/) runs on Netlify, where `vercel.json` has no effect. The user chose to stay on Netlify and leave the hosting config as it is (see `specs/perf-baseline.md`).
 

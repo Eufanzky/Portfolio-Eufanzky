@@ -23,3 +23,19 @@ test("does not download the hidden hero background image", async ({
   await scrollToBottom(page);
   expect(heroImages).toEqual([]);
 });
+
+test("does not preload Framer Motion before the hero renders", async ({
+  request,
+}) => {
+  // Framer Motion is only used by the lazy sections below the fold, so it
+  // must not be in the first-load preload list (roadmap step 18). Read the
+  // served HTML: once the lazy sections load, Vite adds their preloads
+  // (Framer Motion included) to the live page.
+  const html = await (await request.get("/")).text();
+  const preloads = [
+    ...html.matchAll(/<link rel="modulepreload"[^>]*href="([^"]+)"/g),
+  ].map(([, href]) => href);
+
+  expect(preloads.some((href) => /vendor-react/.test(href))).toBe(true);
+  expect(preloads.filter((href) => /vendor-motion/.test(href))).toEqual([]);
+});
