@@ -2,6 +2,8 @@
 
 Performance comes first, then project content. Each step is one small piece of work, and is one commit (or one small PR).
 
+All work happens on a `feature/<feature-name>` branch created from `main`, never on `main` itself. The branch is merged into `main` through a pull request after the user approves.
+
 Every step ends with this human-in-the-loop check, in order:
 
 1. `npm run lint` and `npm run build` pass.

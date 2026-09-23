@@ -34,11 +34,16 @@ There is no test suite. Check changes with `npm run lint` and `npm run build`. `
 
 - `App.jsx` loads `Navbar` and `Hero` eagerly. Everything below the fold (About through Contact, plus `StarsCanvas`) uses `React.lazy` inside one `Suspense`.
 - `vite.config.js` splits vendors into manual chunks (`vendor-react`, `vendor-motion`) and emits gzip and brotli files through `vite-plugin-compression2`. Three.js has no manual chunk on purpose. It ends up in an async chunk that only the lazy-loaded canvases request, so mobile never downloads it.
-- The 3D models are served from `public/desktop_pc/` and `public/planet/`. `vercel.json` sets the cache headers for those paths and for hashed `/assets/`. The canvases load the Draco-compressed `scene-draco.gltf` files; the plain `scene.gltf` versions are unused originals. If you move the models, update `vercel.json` too.
+- The 3D models are served from `public/desktop_pc/` and `public/planet/`. `vercel.json` sets the cache headers for those paths and for hashed `/assets/`. The canvases load the Draco-compressed `scene-draco.gltf` files; the plain `scene.gltf` versions are unused originals. If you move the models, update `vercel.json` too. Note: production (https://eugenio-condori.netlify.app/) currently runs on Netlify, where `vercel.json` has no effect (see `specs/perf-baseline.md`).
 
 **Tailwind custom theme** (in `tailwind.config.js`): custom colors (`primary` = dark bg `#050816`, `secondary`, `tertiary` = card bg), custom `xs: 450px` breakpoint, hero background image pattern.
 
 **Color accent scheme:** Pink `#F72585` for primary accent, cyan `#4CC9F0` for sub-text, blue `#4361EE` for form labels, blue `#4895ef` for secondary.
 
 ## GIT AND GITHUB
-Never push directly to the main branch in git, use another branches for the changes.
+
+- Never work on, commit to or push to `main` directly.
+- Every feature (each roadmap phase or step, or any other change) gets its own branch, named `feature/<feature-name>` in kebab-case (for example `feature/perf-baseline`). Create it from an up-to-date `main` before making any change.
+- Commit on the feature branch only after the roadmap's human-in-the-loop check (`specs/roadmap.md`): lint and build pass, and the user approves the preview.
+- Get changes into `main` through a pull request from the feature branch, merged only after the user approves.
+- Plans for each phase live in `specs/<date>-<phase-name>/` (`requirements.md`, `plan.md`, `validation.md`). Performance numbers live in `specs/perf-baseline.md`.
