@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import { useIsMobile } from "./hooks/useIsMobile";
 
 const About = lazy(() => import("./components/About"));
 const Experience = lazy(() => import("./components/Experience"));
@@ -11,12 +12,14 @@ const Contact = lazy(() => import("./components/Contact"));
 const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
 
 const App = () => {
+  // No Three.js on phones: the Stars canvas is desktop only, like the Hero
+  // and Contact canvases.
+  const isMobile = useIsMobile();
+
   return (
     <div className="relative z-0 bg-primary">
-      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-        <Navbar />
-        <Hero />
-      </div>
+      <Navbar />
+      <Hero />
       <Suspense fallback={null}>
         <About />
         <Experience />
@@ -24,7 +27,7 @@ const App = () => {
         <Works />
         <div className="relative z-0">
           <Contact />
-          <StarsCanvas />
+          {!isMobile && <StarsCanvas />}
         </div>
       </Suspense>
     </div>

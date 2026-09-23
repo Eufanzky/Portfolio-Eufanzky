@@ -12,10 +12,6 @@ test.skip(({ isMobile }) => !isMobile, "mobile only");
 test("no Three.js code or 3D model is downloaded at mobile width", async ({
   page,
 }) => {
-  // Fails today: StarsCanvas has no mobile check (specs/perf-baseline.md,
-  // finding 1). Roadmap step 16 fixes it and removes this line.
-  test.fail();
-
   const threeDFiles = [];
   page.on("request", (request) => {
     const { pathname } = new URL(request.url());

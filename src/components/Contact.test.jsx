@@ -4,12 +4,15 @@ import userEvent from "@testing-library/user-event";
 import emailjs from "@emailjs/browser";
 
 import Contact from "./Contact";
+import { mockMatchMedia } from "../test/matchMedia";
 
 // Tests must never send a real email.
 vi.mock("@emailjs/browser", () => ({ default: { send: vi.fn() } }));
 
-// jsdom has no WebGL.
-vi.mock("./canvas/Earth", () => ({ default: () => null }));
+// jsdom has no WebGL. The marker shows whether Contact asked for the canvas.
+vi.mock("./canvas/Earth", () => ({
+  default: () => <div data-testid="earth-canvas" />,
+}));
 
 const fillAndSend = async (user) => {
   await user.type(screen.getByLabelText("Your Name"), "Ada Lovelace");
@@ -103,5 +106,19 @@ describe("Contact", () => {
     );
     expect(screen.getByRole("button", { name: "Send" })).toBeInTheDocument();
     expect(screen.getByLabelText("Your Message")).toHaveValue("Hello there");
+  });
+
+  it("shows the 3D Earth at desktop width", async () => {
+    mockMatchMedia(false);
+    render(<Contact />);
+    expect(await screen.findByTestId("earth-canvas")).toBeInTheDocument();
+  });
+
+  it("never renders the 3D Earth at phone width", async () => {
+    mockMatchMedia(true);
+    render(<Contact />);
+    // Let the lazy import settle, in case it was requested.
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(screen.queryByTestId("earth-canvas")).not.toBeInTheDocument();
   });
 });

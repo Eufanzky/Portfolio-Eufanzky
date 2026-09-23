@@ -80,7 +80,51 @@ Images: the largest are `python-*.png` (56.8), `new_relic_logo-*.png` (44.1) and
 
 ## Findings for Phase 3
 
-1. **Three.js loads on mobile.** `App.jsx` lazy-loads `StarsCanvas` with no width check, and `Stars-*.js` imports `react-three-fiber.esm-*.js` directly. Every mobile visit downloads about 179 KB brotli (809 KB raw) of Three.js. It also creates a WebGL canvas when the Contact section scrolls into view. This breaks the "No Three.js JavaScript downloaded on mobile" budget (roadmap step 16).
+1. **Three.js loads on mobile.** *Fixed in Phase 3, step 16.* `App.jsx` lazy-loads `StarsCanvas` with no width check, and `Stars-*.js` imports `react-three-fiber.esm-*.js` directly. Every mobile visit downloads about 179 KB brotli (809 KB raw) of Three.js. It also creates a WebGL canvas when the Contact section scrolls into view. This breaks the "No Three.js JavaScript downloaded on mobile" budget (roadmap step 16).
 2. **Production is on Netlify, not Vercel.** `vercel.json` has no effect. Every response, including hashed `/assets/*` files and the 3D models, is served with `cache-control: public,max-age=0,must-revalidate`, so repeat visits revalidate every file. Decision (2026-09-22): stay on Netlify and leave the hosting config as it is. This affects repeat visits only, not the Lighthouse first-load score.
 3. **3D models are not compressed in transit.** Netlify serves `desktop_pc/scene-draco.gltf` (1.87 MB) without `content-encoding`. The build's `.br` file for it is 93 KB. This affects desktop only.
 4. **Icons are PNG.** Tech and experience icons (up to 57 KB each) are still PNG, while the tech stack decision is WebP.
+
+## Phase 3 changes, local measurements (steps 15–19)
+
+Measured on branch `feature/perf-improvements` on 2026-09-23, before the merge. Local Lighthouse 12 (`npx lighthouse`, mobile preset) against `vite preview`, using Playwright's Chromium on WSL with no GPU. Each row is the median of 3 runs. Compare these numbers only with each other, not with the PSI baseline above. The production PSI run is in the next section (step 20).
+
+| After | Score | FCP | LCP | TBT | CLS | Transferred |
+|---|---|---|---|---|---|---|
+| Nothing (`main`, the "before" run) | 59 | 2.57 s | 3.83 s | 1172 ms | 0.093 | 671 KB |
+| Step 15: hero image dropped | 82 | 2.52 s | 3.48 s | 223 ms | 0.094 | 714 KB |
+| Step 16: no 3D on mobile | 99 | 1.74 s | 1.93 s | 55 ms | 0.002 | 274 KB |
+| Step 18: Framer Motion off the critical path | 97 | 1.85 s | 2.28 s | 30 ms | 0.002 | 275 KB |
+
+The TBT numbers before step 16 are mostly the Stars canvas drawn by software WebGL, which exaggerates them compared with a real phone.
+
+Step 18 scores lower above because Lighthouse's default *simulated* throttling (also used by PSI) doesn't slow the network. It replays the load, and `vendor-motion` is now requested after the entry chunk instead of preloaded next to it. With real throttling (`--throttling-method=devtools`, 3 runs each), step 18 is faster: LCP about 1.96 s against 2.19 s for step 16, score 97 against 96. If PSI is short of 90, the next item is to start the lazy sections' imports after the first paint instead of on mount (see "Next items").
+
+What each step did:
+
+- **Step 15, hero image.** `herobg.webp` (143 KB, 2880×1566) was preloaded on every visit but never visible: `#retrobg` covers the hero. The preload, the Tailwind `hero-pattern` and both image files were removed. The LCP element is the hero `<h1>` text, not an image.
+- **Step 16, no 3D on mobile.** `useIsMobile` (`src/hooks/useIsMobile.js`) reads `matchMedia` during the first render. `Hero`, `Contact` and `App` use it for the Computers, Earth and Stars canvases. Before, the first render assumed desktop, so phones also requested `Computers`, `Earth` and `Loader`. That flip also moved the hero heading, which was most of the CLS.
+- **Step 17, fonts.** Checked, no change: Poppins loads without blocking render, with `display=swap`, and every weight requested (400–800) is used. 800 draws `font-black`. The user chose to keep 800 over loading 900 (2026-09-22).
+- **Step 18, motion.** The hero dot is a CSS animation, so `vendor-motion` (29.9 KB brotli) is no longer preloaded on first load. `MotionConfig reducedMotion="user"` in `SectionWrapper`, and a `prefers-reduced-motion` rule in `index.css`.
+- **Step 19, `react-tilt`: not needed.** It only adds React mouse handlers, with no work on load or scroll. Scrolling the page at 375px with a 4× CPU slowdown, script time was the same with and without it (332/421/332 ms against 334/434/344 ms). On touch, a tap leaves the card at 0° (no stuck tilt). Kept as is.
+
+### Loaded on first paint after Phase 3
+
+| File | Raw | gzip | brotli |
+|---|---|---|---|
+| `index-*.js` (entry: App, Navbar, Hero) | 52.2 | 28.3 | 26.0 |
+| `vendor-react-*.js` | 141.4 | 45.3 | 39.7 |
+| `index-*.css` | 21.9 | 5.5 | 4.8 |
+| **JS + CSS total** | **215.5** | **79.1** | **70.5** |
+
+Down from 100.1 KB brotli (`vendor-motion` is no longer on first paint), and without the 142.9 KB hero image. At 375px, no Three.js, canvas or model file loads at all (`e2e/mobile-no-3d.spec.js`).
+
+## After Phase 3, production (step 20)
+
+To be filled in after the merge and Netlify deploy: PSI mobile on https://eugenio-condori.netlify.app/, same fields as step 8.
+
+### Next items, if PSI mobile is under 90
+
+- Start the lazy section imports after the first paint (for example on `requestIdleCallback`), so they don't compete with the entry chunk. This also helps the simulated LCP.
+- Icons as WebP (finding 4), if PSI still flags image delivery.
+- Accessibility findings (no `<main>`, links without a name) are not part of the performance score but are still open.
