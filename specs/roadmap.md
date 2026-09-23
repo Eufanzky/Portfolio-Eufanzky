@@ -9,7 +9,7 @@ Every step ends with this human-in-the-loop check, in order:
 3. The user opens the preview in the browser, on desktop width and on mobile width (DevTools device mode or a real phone on the same network with `npm run preview -- --host`), and checks what changed.
 4. Only after the user approves what they see is the step committed. If they don't approve, the step is revised and checked again.
 
-## Phase 0: Clean up the repository
+## Phase 0: Clean up the repository (done 2026-09-22)
 
 1. Commit the pending `CLAUDE.md` changes, and decide whether to keep or discard the local `package-lock.json` change.
 2. Merge `perf/optimize-threejs-loading` into `main` (it applies cleanly).
