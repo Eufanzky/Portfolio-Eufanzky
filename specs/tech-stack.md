@@ -41,9 +41,16 @@
 - Project and icon images use WebP, lazy-loaded when below the fold.
 - New images are added as WebP, at a width that fits the card, not the full-size screenshot.
 
+### Linting
+
+- `npm run lint` must pass with zero warnings.
+- Fix real problems in code. Turn a rule off only for a pattern it misreads, as an override in `.eslintrc.cjs`, never with `eslint-disable` comments.
+- Current overrides: `react/prop-types` off (plain JS, no `prop-types` package), `react/no-unknown-property` off in `src/components/canvas/` (React Three Fiber props), `react-refresh/only-export-components` off in `src/components/*.jsx` (the `SectionWrapper` HOC exports), and the Node env for `*.config.js`.
+
 ### Dependencies
 
-- Remove dependencies the site doesn't use (for example `BallCanvas`). The perf branch removes `react-router-dom` because nothing uses it yet; it comes back in roadmap Phase 4 for the project detail pages.
+- Remove dependencies the site doesn't use. `BallCanvas` (`canvas/Ball.jsx`) was deleted in Phase 0. The perf branch removed `react-router-dom` because nothing uses it yet; it comes back in roadmap Phase 4 for the project detail pages.
+- Three.js has no manual vendor chunk. Vite puts it in an async chunk that only the lazy canvases load, which keeps it off mobile.
 - Before adding a dependency, check its bundle size cost. Prefer CSS or small custom code for simple effects.
 
 ## Performance budget
