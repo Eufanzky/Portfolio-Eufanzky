@@ -51,6 +51,16 @@ Out of scope:
 | Fonts | Keep Poppins 400–800 | User's choice (2026-09-22). No visual change. |
 | Measuring during the phase | Local Lighthouse (`npx lighthouse` against `npm run preview`, mobile preset) for relative gains | PSI only sees production, which updates after merge. Local numbers aren't compared with the PSI baseline, only with each other. |
 
+## Changes made during the phase
+
+- **Reduced motion flattened the floor grid.** `#retrobg-lines` had its `rotateX(84deg)` only inside the keyframes, so stopping the animation removed the perspective. The base rule now has the same transform. An e2e check covers it.
+- **The `vendor-motion` preload test reads the served HTML, not the live page.** After the lazy sections load, Vite's preload helper adds `modulepreload` links to the page, Framer Motion included.
+- **`MotionConfig` is in `SectionWrapper`, not `App`.** In `App` it would put Framer Motion back into the entry chunk.
+- **Step 18 and PSI.** Lighthouse's simulated throttling (used by PSI) rates step 18 slightly worse, while real throttling shows LCP about 230 ms better. The user approved keeping it. Details are in `specs/perf-baseline.md`.
+- **Step 19 skipped (not needed).** `react-tilt` showed no measurable cost on mobile (`specs/perf-baseline.md`).
+- **The Lighthouse runs left temp profile folders** (named `C:\Users\…\lighthouse.*`, a WSL quirk) in the repo root. They were deleted, and later runs start from the scratchpad directory.
+- **The e2e suite was flaky on desktop** before this phase (1 of 2 runs on `main` failed with a timeout, from software WebGL in headless Chromium). The runs since step 16 all passed (14 of 14, several runs). Not changed; revisit if it comes back.
+
 ## Open questions
 
 - **Font weight 900:** resolved. The user chose to keep 400–800, so headings look exactly as today.
