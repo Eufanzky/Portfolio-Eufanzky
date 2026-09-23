@@ -18,9 +18,8 @@ All work is on branch `feature/perf-baseline`, created from `main`.
 
 ## 3. Lighthouse (roadmap step 8)
 
-3.1. The user runs PageSpeed Insights on https://eugenio-condori.netlify.app/, Mobile tab, 3 times.
-3.2. Record each run (score, FCP, LCP, TBT, CLS, Speed Index, Lighthouse version) and the median in `specs/perf-baseline.md`.
-3.3. Note the LCP element PSI reports (expected: the hero background or the hero heading).
+3.1. The user runs PageSpeed Insights on https://eugenio-condori.netlify.app/, Mobile tab.
+3.2. Record the run (score, FCP, LCP, TBT, CLS, Speed Index, Lighthouse version) and the insights PSI lists in `specs/perf-baseline.md`.
 
 ## 4. Close out
 

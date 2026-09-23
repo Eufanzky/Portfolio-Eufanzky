@@ -7,20 +7,30 @@ Roadmap Phase 1 (steps 8–9). Phase 2 picks its work from these numbers, and st
 
 ## Lighthouse (mobile), step 8
 
-Pending. See "How to measure" below.
+PageSpeed Insights, Mobile tab, run by the user on 2026-09-22 at 10:12 PM GMT-4. Lighthouse 13.5.0, emulated Moto G Power, Slow 4G throttling, HeadlessChromium 153.0.8010.36. One run.
 
-| Run | Date | Lighthouse | Score | FCP | LCP | TBT | CLS | Speed Index |
-|---|---|---|---|---|---|---|---|---|
-| 1 | | | | | | | | |
-| 2 | | | | | | | | |
-| 3 | | | | | | | | |
-| **Median** | | | | | | | | |
+| Metric | Value | Budget | Status |
+|---|---|---|---|
+| Performance score | **78** | ≥ 90 | Over budget |
+| First Contentful Paint | 3.0 s | – | |
+| Largest Contentful Paint | **4.2 s** | ≤ 2.5 s | Over budget |
+| Total Blocking Time | 0 ms | – | |
+| Cumulative Layout Shift | 0.091 | ≤ 0.1 | Within budget, close to the limit |
+| Speed Index | 3.0 s | – | |
 
-Budget (`specs/tech-stack.md`): score ≥ 90, LCP ≤ 2.5 s, CLS ≤ 0.1.
+Other categories: Accessibility 90, Best Practices 100, SEO 100.
 
-### How to measure
+Insights and diagnostics PSI reported:
 
-Use PageSpeed Insights (https://pagespeed.web.dev/) on the production URL, **Mobile** tab. Run it 3 times and record each run, then the median score. PSI uses Lighthouse's default mobile throttling, so the runs are comparable with later re-measurements.
+- Reduce unused JavaScript: est. savings 180 KiB. This matches the Three.js chunk that mobile downloads (finding 1 below).
+- Improve image delivery: est. savings 140 KiB.
+- Minimize main-thread work: 2.2 s. 3 long tasks found.
+- Forced reflow, and layout shift culprits (CLS 0.091).
+- 1 non-composited animation.
+- Render-blocking requests: est. savings 10 ms (small).
+- Accessibility: links without a discernible name, and no `<main>` landmark.
+
+To re-measure (step 15), use https://pagespeed.web.dev/ on the production URL, Mobile tab, and record the same fields.
 
 ## Build output, step 9
 
@@ -71,6 +81,6 @@ Images: the largest are `python-*.png` (56.8), `new_relic_logo-*.png` (44.1) and
 ## Findings for Phase 2
 
 1. **Three.js loads on mobile.** `App.jsx` lazy-loads `StarsCanvas` with no width check, and `Stars-*.js` imports `react-three-fiber.esm-*.js` directly. Every mobile visit downloads about 179 KB brotli (809 KB raw) of Three.js. It also creates a WebGL canvas when the Contact section scrolls into view. This breaks the "No Three.js JavaScript downloaded on mobile" budget (roadmap step 11).
-2. **Production is on Netlify, not Vercel.** `vercel.json` has no effect. Every response, including hashed `/assets/*` files and the 3D models, is served with `cache-control: public,max-age=0,must-revalidate`, so repeat visits revalidate every file.
+2. **Production is on Netlify, not Vercel.** `vercel.json` has no effect. Every response, including hashed `/assets/*` files and the 3D models, is served with `cache-control: public,max-age=0,must-revalidate`, so repeat visits revalidate every file. Decision (2026-09-22): stay on Netlify and leave the hosting config as it is. This affects repeat visits only, not the Lighthouse first-load score.
 3. **3D models are not compressed in transit.** Netlify serves `desktop_pc/scene-draco.gltf` (1.87 MB) without `content-encoding`. The build's `.br` file for it is 93 KB. This affects desktop only.
 4. **Icons are PNG.** Tech and experience icons (up to 57 KB each) are still PNG, while the tech stack decision is WebP.

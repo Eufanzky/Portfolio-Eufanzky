@@ -31,12 +31,12 @@ Out of scope:
 | Decision | Choice | Reason |
 |---|---|---|
 | Branch | `feature/perf-baseline` | Every roadmap feature gets its own `feature/<name>` branch (`CLAUDE.md`). |
-| Lighthouse source | PageSpeed Insights, Mobile tab, 3 runs, median recorded | Uses Lighthouse's standard mobile throttling, so it's repeatable in step 15. Needs no local Chrome. |
+| Lighthouse source | PageSpeed Insights, Mobile tab, one run by the user | Uses Lighthouse's standard mobile throttling, so it's repeatable in step 15. Needs no local Chrome. |
 | Size unit | KB = 1000 bytes, brotli column shown | Production serves brotli, so it is closest to what is transferred. |
 
-## Open questions
+## Resolved questions
 
-- **Hosting:** keep Netlify and add a `netlify.toml` (or `public/_headers`) with the cache headers from `vercel.json`, or move to Vercel? This decides how findings 2 and 3 in `specs/perf-baseline.md` are fixed in Phase 2.
+- **Hosting:** stay on Netlify and leave the hosting config as it is (user's choice, 2026-09-22). No `netlify.toml` or `_headers` file is added.
 
 ## Constraints
 
