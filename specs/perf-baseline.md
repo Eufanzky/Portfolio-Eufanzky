@@ -121,10 +121,30 @@ Down from 100.1 KB brotli (`vendor-motion` is no longer on first paint), and wit
 
 ## After Phase 3, production (step 20)
 
-To be filled in after the merge and Netlify deploy: PSI mobile on https://eugenio-condori.netlify.app/, same fields as step 8.
+PageSpeed Insights, Mobile tab, run by the user on 2026-09-23 at 12:29–12:30 AM GMT-4, right after PR #6 was deployed (`main` at `87e6e60`; the served asset hashes match a local build). Lighthouse 13.5.0, emulated Moto G Power, Slow 4G throttling, HeadlessChromium 153.0.8010.36. Three runs.
 
-### Next items, if PSI mobile is under 90
+| Metric | Baseline | Run 1 | Run 2 | Run 3 | Budget | Status |
+|---|---|---|---|---|---|---|
+| Performance score | 78 | **94** | **94** | **94** | ≥ 90 | Within budget |
+| First Contentful Paint | 3.0 s | 2.4 s | 2.4 s | 2.4 s | – | |
+| Largest Contentful Paint | 4.2 s | 2.5 s | 2.5 s | 2.5 s | ≤ 2.5 s | Within budget, at the limit |
+| Total Blocking Time | 0 ms | 0 ms | 0 ms | 0 ms | – | |
+| Cumulative Layout Shift | 0.091 | 0 | 0.002 | 0 | ≤ 0.1 | Within budget |
+| Speed Index | 3.0 s | 2.4 s | 2.4 s | 2.4 s | – | |
 
-- Start the lazy section imports after the first paint (for example on `requestIdleCallback`), so they don't compete with the entry chunk. This also helps the simulated LCP.
-- Icons as WebP (finding 4), if PSI still flags image delivery.
-- Accessibility findings (no `<main>`, links without a name) are not part of the performance score but are still open.
+Other categories are unchanged: Accessibility 90, Best Practices 100, SEO 100.
+
+Every budget in `specs/tech-stack.md` is now met, and step 20 is done. LCP sits exactly at the 2.5 s limit, so any new work on the hero or the entry chunk should be re-measured.
+
+What PSI still reports:
+
+- Improve image delivery: est. savings 33 KiB (was 140 KiB before `herobg` was removed). Probably the PNG icons (finding 4).
+- Reduce unused JavaScript: est. savings 23 KiB (was 180 KiB before Three.js left mobile).
+- 1 non-composited animation.
+- Accessibility: links without a discernible name, and no `<main>` landmark.
+
+### Possible later items (not needed for the budget)
+
+- Start the lazy section imports after the first paint (for example on `requestIdleCallback`), for more headroom on LCP.
+- Icons as WebP (finding 4).
+- The accessibility findings above.
