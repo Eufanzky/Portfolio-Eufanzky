@@ -34,5 +34,10 @@ module.exports = {
       files: ['*.config.js'],
       env: { node: true },
     },
+    {
+      // Tests run in Node (Vitest, Playwright) and use its globals.
+      files: ['**/*.test.{js,jsx}', 'e2e/**', 'src/test/**'],
+      env: { node: true },
+    },
   ],
 }

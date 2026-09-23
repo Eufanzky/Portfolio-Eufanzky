@@ -12,10 +12,19 @@ Personal portfolio website for Eugenio Condori, built with React, Three.js, and 
 - `npm run build` — Production build
 - `npm run lint` — ESLint (JS/JSX, zero warnings allowed)
 - `npm run preview` — Preview production build
-- `npm test` — Vitest + React Testing Library component tests (set up in roadmap Phase 2)
-- `npm run test:e2e` — Playwright end-to-end tests against the preview build (set up in roadmap Phase 2)
+- `npm test` — Vitest + React Testing Library component tests, run once (`npm run test:watch` for watch mode)
+- `npm run test:e2e` — Playwright end-to-end tests. Builds the site and serves it with `npm run preview` on port 4173 (reuses a server already running there, so rebuild first if you started one yourself)
 
-Check changes with `npm run lint`, `npm test`, `npm run test:e2e` and `npm run build`. Every feature adds or updates its tests (see "Testing" in `specs/tech-stack.md`). Until roadmap Phase 2 is done, the two test commands don't exist yet. `.eslintrc.cjs` turns off `react/prop-types` everywhere, `react/no-unknown-property` in `src/components/canvas/` (React Three Fiber props), and `react-refresh/only-export-components` in `src/components/*.jsx` (the `SectionWrapper` HOC exports).
+Check changes with `npm run lint`, `npm test`, `npm run test:e2e` and `npm run build`. Every feature adds or updates its tests (see "Testing" in `specs/tech-stack.md`). `.eslintrc.cjs` turns off `react/prop-types` everywhere, `react/no-unknown-property` in `src/components/canvas/` (React Three Fiber props), and `react-refresh/only-export-components` in `src/components/*.jsx` (the `SectionWrapper` HOC exports). Test files (`**/*.test.{js,jsx}`, `e2e/**`, `src/test/**`) get the Node environment.
+
+**Tests:**
+
+- Component tests live next to the code they test (`src/**/*.test.{js,jsx}`). Vitest config is the `test` block in `vite.config.js` (jsdom). `src/test/setup.js` loads jest-dom and stubs `IntersectionObserver` and `matchMedia`, which jsdom lacks. Globals are off: import `describe`, `it`, `expect` and `vi` from `vitest`.
+- Mock the 3D canvases (`vi.mock("./canvas/Earth", ...)`, since jsdom has no WebGL) and always mock `@emailjs/browser`. No test may send a real email.
+- End-to-end tests live in `e2e/`, config in `playwright.config.js`: Chromium only, a `desktop` project (1280×720) and a `mobile` project (375px wide). `e2e/helpers.js` has `scrollToBottom`, which scrolls instantly because the site uses `scroll-behavior: smooth`.
+- Headless Chromium has no GPU, so the canvases render in software and the desktop page is slow. That's why the timeouts are raised (60 s per test, 15 s per `expect`).
+- `e2e/mobile-no-3d.spec.js` is marked `test.fail` until roadmap step 16 stops the 3D chunks loading on mobile. Remove the mark then.
+- On Linux or WSL, Chromium needs system libraries: run `sudo npx playwright install-deps chromium` once per machine.
 
 **Environment variables** (Vite `VITE_` prefix, read in `Contact.jsx`): `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY`, `VITE_CONTACT_EMAIL`. The contact form needs these to send email.
 
