@@ -47,7 +47,7 @@ Check changes with `npm run lint`, `npm test`, `npm run test:e2e` and `npm run b
 - `vite.config.js` splits vendors into manual chunks (`vendor-react`, `vendor-motion`) and emits gzip and brotli files through `vite-plugin-compression2`. Three.js has no manual chunk on purpose. It ends up in an async chunk that only the lazy-loaded canvases request. Known gap: `StarsCanvas` has no mobile check, so mobile still downloads that chunk (`specs/perf-baseline.md`, finding 1, fixed in roadmap Phase 3).
 - The 3D models are served from `public/desktop_pc/` and `public/planet/`. `vercel.json` sets the cache headers for those paths and for hashed `/assets/`. The canvases load the Draco-compressed `scene-draco.gltf` files; the plain `scene.gltf` versions are unused originals. If you move the models, update `vercel.json` too. Note: production (https://eugenio-condori.netlify.app/) runs on Netlify, where `vercel.json` has no effect. The user chose to stay on Netlify and leave the hosting config as it is (see `specs/perf-baseline.md`).
 
-**Tailwind custom theme** (in `tailwind.config.js`): custom colors (`primary` = dark bg `#050816`, `secondary`, `tertiary` = card bg), custom `xs: 450px` breakpoint, hero background image pattern.
+**Tailwind custom theme** (in `tailwind.config.js`): custom colors (`primary` = dark bg `#050816`, `secondary`, `tertiary` = card bg), custom `xs: 450px` breakpoint. The hero has no background image: `AnimatedBackground` (`#retrobg`) covers it.
 
 **Color accent scheme:** Pink `#F72585` for primary accent, cyan `#4CC9F0` for sub-text, blue `#4361EE` for form labels, blue `#4895ef` for secondary.
 
