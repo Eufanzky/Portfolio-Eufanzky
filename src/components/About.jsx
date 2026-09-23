@@ -1,4 +1,3 @@
-import React from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
@@ -50,10 +49,10 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        I'm looking for oportunities as a Frontend Developer. I consider myself
+        I&apos;m looking for oportunities as a Frontend Developer. I consider myself
         as a proactive, autonomous, creative, passionate with technology and
         never stop learning person. My objective is to collaborate and create
-        products with high quality that make significant impact. I'm looking for
+        products with high quality that make significant impact. I&apos;m looking for
         new challenges and a group of people who look for self improvement and
         help others every day.
       </motion.p>
