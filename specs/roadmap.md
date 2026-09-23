@@ -27,7 +27,7 @@ Every step ends with this human-in-the-loop check, in order:
 8. Run Lighthouse (mobile) on the production site and record the score, LCP and CLS in `specs/perf-baseline.md`.
 9. Run `npm run build` and record the main chunk sizes in the same file.
 
-## Phase 2: Set up testing
+## Phase 2: Set up testing (done 2026-09-22)
 
 10. Install Vitest, React Testing Library, `@testing-library/user-event` and jsdom as dev dependencies. Add a `test` block to `vite.config.js` (jsdom environment, a setup file) and an `npm test` script.
 11. Write the first component tests. Replace the 3D canvases and EmailJS with mocks (jsdom has no WebGL, and tests must never send real email):
